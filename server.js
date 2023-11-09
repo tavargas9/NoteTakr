@@ -21,16 +21,28 @@ app.use(express.static('public'));
 app.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if (err) throw err;
-        res.json(JSON.parse(data))
+        let noteData = JSON.parse(data)
+        res.json(noteData)
     })
 });
 
 app.post('/api/notes', (req, res) => {
+    const rawData = fs.readFileSync('./db/db.json');
+    const currentDb = JSON.parse(rawData);
     const note = req.body
     note.id = uuidv4()
-    db.push(note)
-    fs.writeFileSync('./db/db.json', JSON.stringify(db))
-    res.json(db)
+    currentDb.push(note)
+    fs.writeFileSync('./db/db.json', JSON.stringify(currentDb))
+    res.json(currentDb)
+});
+
+app.delete('/api/notes/:id' , (req, res) => {
+    const rawData = fs.readFileSync('./db/db.json');
+    const currentDb = JSON.parse(rawData);
+    const idToDelete = req.params.id;
+    const newNotes = currentDb.filter((note) => note.id !== idToDelete);
+    fs.writeFileSync('./db/db.json', JSON.stringify(newNotes))
+    res.json(newNotes)
 });
 
 //HTML Routes
