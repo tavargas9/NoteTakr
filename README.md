@@ -25,6 +25,8 @@ To use the application, head over to the deployment via Heroku. To install to yo
 
 To use the application, use [this link](https://notetakr-8b74dec0dae2.herokuapp.com/) to visit the deployed web application via Heroku. To use locally, open the project in VS Code (or other IDE) and open the terminal. Run the command ```node server.js``` to start up the server on your local machine. It is set up to run on ```PORT 3001```. Open up your browser and head to the URL ```localhost:3001``` to open the application. 
 
+![Screenshot 2024-01-24 at 10 09 24 PM](https://github.com/tavargas9/NoteTakr/assets/142061829/7b3da6e8-0204-422c-a109-d1a8a6c889ce)
+
 ## License 
 
 This project is available under the MIT license. See [LICENSE](./LICENSE) for more info.
